@@ -29,13 +29,13 @@ class Header extends React.Component {
             <nav>
               <ul>
                 <Link to="/search" data-testid="link-to-search">
-                  <li>Search</li>
+                  <li>Pesquisa</li>
                 </Link>
                 <Link to="/favorites" data-testid="link-to-favorites">
-                  <li>Favorites</li>
+                  <li>Favoritas</li>
                 </Link>
                 <Link to="/profile" data-testid="link-to-profile">
-                  <li>Profile</li>
+                  <li>Perfil</li>
                 </Link>
               </ul>
             </nav>
