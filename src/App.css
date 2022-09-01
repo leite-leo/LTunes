@@ -1,0 +1,24 @@
+.loading {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.albuns {
+  display: flex;
+  flex-direction: column;
+}
+
+.albun-card-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album-card {
+  margin: 15px;
+  width: 200px;
+  height: 400px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
