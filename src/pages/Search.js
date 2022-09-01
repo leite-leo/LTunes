@@ -11,17 +11,20 @@ class Search extends React.Component {
     loading: false,
     albuns: [],
     showResult: false,
+    artistName: '',
   };
 
   async handleClick() {
-    const { artist } = this.state;
+    const { artist, artistName } = this.state;
     this.setState({
       loading: true,
+      artistName: artist,
     });
-    console.log(artist);
+    console.log(artistName);
     const data = await searchAlbumsAPI(artist);
     console.log(data);
     this.setState({
+      artist: '',
       loading: false,
       albuns: data,
       showResult: true,
@@ -41,7 +44,7 @@ class Search extends React.Component {
   };
 
   render() {
-    const { artist, isDisabled, albuns, loading, showResult } = this.state;
+    const { artist, isDisabled, albuns, loading, showResult, artistName } = this.state;
     return (
       <div data-testid="page-search">
         <h1>Search</h1>
@@ -74,7 +77,7 @@ class Search extends React.Component {
             && (
               <h2>
                 Resultado de álbuns de:
-                {` ${artist}`}
+                {` ${artistName}`}
               </h2>)}
           <section className="albun-card-section">
             {albuns.length > 0 ? (albuns.map((album) => (
