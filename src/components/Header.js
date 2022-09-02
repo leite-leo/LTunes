@@ -25,7 +25,7 @@ class Header extends React.Component {
       loading ? <Loading />
         : (
           <div>
-            <h5>{ name }</h5>
+            <h5 data-testid="header-user-name">{ name }</h5>
             <header data-testid="header-component">
               <ul className="header-ul">
                 <Link to="/search" data-testid="link-to-search">
