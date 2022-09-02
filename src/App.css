@@ -4,13 +4,6 @@
   justify-content: center;
 }
 
-.header {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-}
-
 .header-ul {
   align-items: center;
   display: flex;
