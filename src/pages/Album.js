@@ -35,12 +35,12 @@ class Album extends React.Component {
         <h3 data-testid="album-name">{`Collection Name: ${albumName}`}</h3>
         <h5 data-testid="artist-name">{`Artist Name: ${artist}`}</h5>
         {
-          tracks.map((track, index) => (
+          tracks.map((track) => (
             track.kind === 'song' && <MusicCard
               key={ track.trackName }
               trackName={ track.trackName }
               previewUrl={ track.previewUrl }
-              trackNumber={ index }
+              trackId={ track.trackId }
             />))
         }
       </div>
