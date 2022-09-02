@@ -15,14 +15,12 @@ class Search extends React.Component {
   };
 
   async handleClick() {
-    const { artist, artistName } = this.state;
+    const { artist } = this.state;
     this.setState({
       loading: true,
       artistName: artist,
     });
-    console.log(artistName);
     const data = await searchAlbumsAPI(artist);
-    console.log(data);
     this.setState({
       artist: '',
       loading: false,
@@ -46,11 +44,11 @@ class Search extends React.Component {
   render() {
     const { artist, isDisabled, albuns, loading, showResult, artistName } = this.state;
     return (
-      <div data-testid="page-search">
-        <h1>Search</h1>
+      <div data-testid="page-search" className="search-section">
         <Header />
+        <h1>Pesquisa</h1>
         {loading ? <Loading /> : (
-          <form>
+          <form className="search-form">
             <label htmlFor="artist">
               Nome do Artista
               <input

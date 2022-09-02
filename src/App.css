@@ -4,9 +4,51 @@
   justify-content: center;
 }
 
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.header-ul {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.header-li {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  text-decoration: none;
+}
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-section h1 {
+  text-align: center;
+}
+
+.search-form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .albuns {
   display: flex;
   flex-direction: column;
+}
+
+.albuns h2 {
+  text-align: center;
 }
 
 .albun-card-section {
@@ -21,5 +63,6 @@
   flex-direction: column;
   height: 450px;
   margin: 15px;
+  text-decoration: none;
   width: 250px;
 }

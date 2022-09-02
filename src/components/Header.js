@@ -24,22 +24,24 @@ class Header extends React.Component {
     return (
       loading ? <Loading />
         : (
-          <header data-testid="header-component">
-            <h5 data-testid="header-user-name">{ name }</h5>
-            <nav>
-              <ul>
-                <Link to="/search" data-testid="link-to-search">
-                  <li>Pesquisa</li>
-                </Link>
-                <Link to="/favorites" data-testid="link-to-favorites">
-                  <li>Favoritas</li>
-                </Link>
-                <Link to="/profile" data-testid="link-to-profile">
-                  <li>Perfil</li>
-                </Link>
-              </ul>
-            </nav>
-          </header>)
+          <div>
+            <h5>{ name }</h5>
+            <header data-testid="header-component">
+              <nav className="header">
+                <ul className="header-ul">
+                  <Link to="/search" data-testid="link-to-search">
+                    <li className="header-li">Pesquisa</li>
+                  </Link>
+                  <Link to="/favorites" data-testid="link-to-favorites">
+                    <li className="header-li">Favoritas</li>
+                  </Link>
+                  <Link to="/profile" data-testid="link-to-profile">
+                    <li className="header-li">Perfil</li>
+                  </Link>
+                </ul>
+              </nav>
+            </header>
+          </div>)
     );
   }
 }
