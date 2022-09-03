@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class Album extends React.Component {
@@ -18,6 +18,7 @@ class Album extends React.Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     this.responseFromGetMusics(id);
+    this.recoverFavoriteSongs();
   }
 
   async responseFromGetMusics(id) {
@@ -27,6 +28,18 @@ class Album extends React.Component {
       albumName: data[0].collectionName,
       tracks: data,
     });
+  }
+
+  async recoverFavoriteSongs() {
+    const { favorites } = this.state;
+    this.setState({ loading: true });
+    const favoriteds = await getFavoriteSongs();
+    console.log('recuperadas do storage', favoriteds);
+    this.setState({
+      loading: false,
+      favorites: [...favoriteds],
+    });
+    console.log('estado favoritas', favorites);
   }
 
   async addFavorite(id) {
