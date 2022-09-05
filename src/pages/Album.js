@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class Album extends React.Component {
@@ -39,7 +39,7 @@ class Album extends React.Component {
       loading: false,
       favorites: [...favoriteds],
     });
-    console.log('estado favoritas', favorites);
+    console.log('estado favorites depois do recover do storage', favorites);
   }
 
   async addFavorite(id) {
@@ -51,10 +51,23 @@ class Album extends React.Component {
       loading: false,
       favorites: [...favorites, favoritedTrack],
     });
+    console.log('estado favotites depois de adicionar favorita', favorites);
+  }
+
+  async removeFavorite(id) {
+    const { tracks } = this.state;
+    const trackToRemove = tracks.find((track) => track.trackId === id);
+    this.setState({ loading: true });
+    await removeSong(trackToRemove);
+    await this.recoverFavoriteSongs();
+    this.setState({
+      loading: false,
+    });
   }
 
   render() {
     const { artist, albumName, tracks, loading, favorites } = this.state;
+    let fav = false;
     return (
       <div data-testid="page-album">
         <Header />
@@ -68,8 +81,17 @@ class Album extends React.Component {
                 trackName={ track.trackName }
                 previewUrl={ track.previewUrl }
                 trackId={ track.trackId }
-                onChange={ () => this.addFavorite(track.trackId) }
                 checked={ favorites.some((song) => song.trackId === track.trackId) }
+                onChange={ () => {
+                  if (favorites.length === 0) {
+                    return this.addFavorite(track.trackId);
+                  }
+                  fav = favorites.some((element) => element.trackId === track.trackId);
+                  if (fav) {
+                    return this.removeFavorite(track.trackId);
+                  }
+                  return this.addFavorite(track.trackId);
+                } }
               />))) : <Loading />
         }
       </div>
