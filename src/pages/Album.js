@@ -31,15 +31,12 @@ class Album extends React.Component {
   }
 
   async recoverFavoriteSongs() {
-    const { favorites } = this.state;
     this.setState({ loading: true });
     const favoriteds = await getFavoriteSongs();
-    console.log('recuperadas do storage', favoriteds);
     this.setState({
       loading: false,
       favorites: [...favoriteds],
     });
-    console.log('estado favorites depois do recover do storage', favorites);
   }
 
   async addFavorite(id) {
@@ -51,7 +48,6 @@ class Album extends React.Component {
       loading: false,
       favorites: [...favorites, favoritedTrack],
     });
-    console.log('estado favotites depois de adicionar favorita', favorites);
   }
 
   async removeFavorite(id) {
