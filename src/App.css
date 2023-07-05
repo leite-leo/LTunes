@@ -1,3 +1,11 @@
+Link {
+  text-decoration: none;
+}
+
+h4 {
+  text-decoration: none;
+}
+
 .loading {
   align-items: center;
   display: flex;
@@ -38,24 +46,37 @@
 .albuns {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+
 }
 
 .albuns h2 {
   text-align: center;
+  text-decoration: none;
 }
 
 .albun-card-section {
+  align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
+  margin-bottom: 65px;
+  margin-top: 15px;
+  text-decoration: none;
 }
 
 .album-card {
-  border: 1px solid black;
+  align-items: center;
+  border: 2px solid lightgrey;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.63);
   display: flex;
   flex-direction: column;
-  height: 450px;
-  margin: 15px;
+  font-family: Epilogue , sans-serif;
+  font-size: small;
+  height: 200px;
+  margin: 5px;
+  overflow: hidden;
+  text-align: center;
   text-decoration: none;
-  width: 250px;
+  width: 150px;
 }

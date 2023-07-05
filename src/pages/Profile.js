@@ -31,11 +31,11 @@ class Profile extends React.Component {
         {
           !loading ? (
             <section className="profile-section">
-              <h1>Perfil</h1>
+              <h2>Perfil</h2>
               <img src={ user.image } alt="foto" data-testid="profile-image" />
-              <h2>
+              <h3>
                 { user.name }
-              </h2>
+              </h3>
               <h3>
                 { user.email }
               </h3>
