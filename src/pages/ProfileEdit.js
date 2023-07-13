@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
-import Loading from './Loading';
+// import Loading from './Loading';
 
 class ProfileEdit extends React.Component {
   state = {
@@ -19,12 +19,12 @@ class ProfileEdit extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { name, email, description, image  } = this.state;
+    const { name, email, description, image } = this.state;
     const obj = {
-      name: name,
-      email: email,
-      image: image,
-      description: description,
+      name,
+      email,
+      image,
+      description,
     };
     this.setState({
       [target.name]: target.value,
@@ -33,14 +33,14 @@ class ProfileEdit extends React.Component {
   };
 
   checkInput = () => {
-    const { name, email, description, image  } = this.state;
+    const { name, email, description, image } = this.state;
     const min = 1;
-    if ( image.length >= min
-      && name.length >= min 
+    if (image.length >= min
+      && name.length >= min
       && email.length >= min
-      && description.length >= min ) {
-        this.setState({ isDisabled: false });
-      }
+      && description.length >= min) {
+      this.setState({ isDisabled: false });
+    }
   };
 
   async callGetUser() {
@@ -49,7 +49,7 @@ class ProfileEdit extends React.Component {
     this.setState({
       user,
       name: user.name,
-      email:user.email,
+      email: user.email,
       description: user.description,
       image: user.image,
       loading: false,
@@ -71,7 +71,7 @@ class ProfileEdit extends React.Component {
         <Header />
         <h3>Editar perfil</h3>
         <form>
-          <img src={ image } alt="foto de perfil" width="100px"/>
+          <img src={ image } alt="foto de perfil" width="100px" />
           <label htmlFor="image">
             Foto:
             <input

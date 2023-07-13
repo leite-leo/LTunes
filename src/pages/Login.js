@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Login extends React.Component {
   state = {
@@ -37,13 +38,18 @@ class Login extends React.Component {
     const { isDisabled, name, loading } = this.state;
     return (
       loading ? <Loading /> : (
-        <div data-testid="page-login">
-          <h1>Login</h1>
-          <form>
-            <label htmlFor="name">
-              Nome
+        <div data-testid="page-login" className="login-page mt-md-5">
+          <img src="https://iili.io/HLdDJrx.png" className="login-img" alt="logotipo" />
+          <br />
+          <br />
+          <form className="d-flex flex-column">
+            <label htmlFor="name" className="">
               <input
                 type="text"
+                className="form-control mb-2 mr-sm-2"
+                placeholder="Usuário"
+                aria-label="Name"
+                aria-describedby="inputGroup-sizing-default"
                 data-testid="login-name-input"
                 name="name"
                 id="name"
@@ -53,11 +59,12 @@ class Login extends React.Component {
             </label>
             <button
               type="button"
+              className="btn btn-outline-primary"
               data-testid="login-submit-button"
               disabled={ isDisabled }
               onClick={ () => this.handleClick() }
             >
-              Entrar
+              Login
             </button>
           </form>
         </div>

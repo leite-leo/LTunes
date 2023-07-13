@@ -15,7 +15,6 @@ class App extends React.Component {
     const { id } = this.props;
     return (
       <div>
-        <p>TrybeTunes</p>
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/search" render={ (props) => <Search { ...props } /> } />

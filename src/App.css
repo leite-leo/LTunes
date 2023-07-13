@@ -80,3 +80,10 @@ h4 {
   text-decoration: none;
   width: 150px;
 }
+
+.login-page {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
