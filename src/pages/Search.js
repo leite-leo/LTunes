@@ -46,52 +46,56 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search" className="search-section">
         <Header />
-        <h1>Pesquisa</h1>
         {loading ? <Loading /> : (
-          <form className="search-form">
-            <label htmlFor="artist">
-              Nome do Artista
-              <input
-                type="text"
-                data-testid="search-artist-input"
-                name="artist"
-                id="artist"
-                value={ artist }
-                onChange={ this.onInputChange }
-              />
-            </label>
-            <button
-              type="button"
-              data-testid="search-artist-button"
-              disabled={ isDisabled }
-              onClick={ () => this.handleClick() }
-            >
-              Pesquisar
-            </button>
-          </form>
+          <div className="search-form mt-md-5">
+            <img src="https://iili.io/HLWQofs.jpg" className="login-img" alt="logotipo" />
+            <br />
+            <br />
+            <form className="d-flex flex-column">
+              <h5>Pesquise por um artista ou banda:</h5>
+              <label htmlFor="name" className="">
+                <input
+                  type="text"
+                  className="form-control mb-2 mr-sm-2"
+                  placeholder=""
+                  aria-label="artist"
+                  aria-describedby="inputGroup-sizing-default"
+                  data-testid="search-artist-input"
+                  name="artist"
+                  id="artist"
+                  value={ artist }
+                  onChange={ this.onInputChange }
+                />
+              </label>
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                data-testid="search-artist-button"
+                disabled={ isDisabled }
+                onClick={ () => this.handleClick() }
+              >
+                Pesquisar
+              </button>
+            </form>
+          </div>
         )}
         <section className="albuns">
           { showResult
             && (
               <h2>
-                Resultado de álbuns de:
                 {` ${artistName}`}
               </h2>)}
           <section className="albun-card-section">
             {albuns.length > 0 ? (albuns.map((album) => (
-              <Link
-                to={ `/album/${album.collectionId}` }
-                data-testid={ `link-to-album-${album.collectionId}` }
-                key={ album.collectionId }
-              >
-                <div className="album-card">
-                  <img src={ album.artworkUrl100 } alt={ album.collectionName } />
-                  <h4>{ album.collectionName }</h4>
+              <a className="album-card" href={ `/album/${album.collectionId}` }>
+                <img src={ album.artworkUrl100 } alt={ album.collectionName } />
+                <div className="intra-card">
+                  <h5>{ album.collectionName }</h5>
                   <h6>{ album.artistName }</h6>
                 </div>
-              </Link>
+              </a>
             )))
-              : <h3>Nenhum álbum foi encontrado</h3>}
+              : <h3 />}
           </section>
         </section>
       </div>

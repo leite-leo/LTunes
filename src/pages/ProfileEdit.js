@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
-// import Loading from './Loading';
+import Loading from './Loading';
 
 class ProfileEdit extends React.Component {
   state = {

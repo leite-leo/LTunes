@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../pages/Loading';
 
@@ -25,19 +24,29 @@ class Header extends React.Component {
       loading ? <Loading />
         : (
           <div>
-            <h5 data-testid="header-user-name">{ name }</h5>
             <header data-testid="header-component">
-              <ul className="header-ul">
-                <Link to="/search" data-testid="link-to-search">
-                  <li className="header-li">Pesquisa</li>
-                </Link>
-                <Link to="/favorites" data-testid="link-to-favorites">
-                  <li className="header-li">Favoritas</li>
-                </Link>
-                <Link to="/profile" data-testid="link-to-profile">
-                  <li className="header-li">Perfil</li>
-                </Link>
-              </ul>
+              <nav className="navbar navbar-expand-lg background-color: #e3f2fd">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon" />
+                </button>
+                <div className="collapse navbar-collapse d-flex justify-content-around" id="navbarNav">
+                  <ul className="navbar-nav nav-underline d-flex justify-content-evenly">
+                    <li className="nav-item active">
+                      <a className="nav-link fs-4" href="/search">Pesquisa</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link fs-4" href="/favorites">Favoritas</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link fs-4" href="/profile">Perfil</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link fs-4" href="/">Sair</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              {/* <h5 data-testid="header-user-name">{ name }</h5> */}
             </header>
           </div>)
     );
