@@ -26,10 +26,21 @@ class Header extends React.Component {
           <div>
             <header data-testid="header-component">
               <nav className="navbar navbar-expand-lg background-color: #e3f2fd">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
                   <span className="navbar-toggler-icon" />
                 </button>
-                <div className="collapse navbar-collapse d-flex justify-content-around" id="navbarNav">
+                <div
+                  className="collapse navbar-collapse d-flex justify-content-around"
+                  id="navbarNav"
+                >
                   <ul className="navbar-nav nav-underline d-flex justify-content-evenly">
                     <li className="nav-item active">
                       <a className="nav-link fs-4" href="/search">Pesquisa</a>

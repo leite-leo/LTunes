@@ -67,29 +67,31 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <h3 data-testid="album-name">{`Collection Name: ${albumName}`}</h3>
-        <h5 data-testid="artist-name">{`Artist Name: ${artist}`}</h5>
-        {
-          !loading ? (
-            tracks.map((track) => (
-              track.kind === 'song' && <MusicCard
-                key={ track.trackName }
-                trackName={ track.trackName }
-                previewUrl={ track.previewUrl }
-                trackId={ track.trackId }
-                checked={ favorites.some((song) => song.trackId === track.trackId) }
-                onChange={ () => {
-                  if (favorites.length === 0) {
+        <section className="album-musics">
+          <h3 data-testid="album-name">{`Álbum: ${albumName}`}</h3>
+          <h5 data-testid="artist-name">{`Artista: ${artist}`}</h5>
+          {
+            !loading ? (
+              tracks.map((track) => (
+                track.kind === 'song' && <MusicCard
+                  key={ track.trackName }
+                  trackName={ track.trackName }
+                  previewUrl={ track.previewUrl }
+                  trackId={ track.trackId }
+                  checked={ favorites.some((song) => song.trackId === track.trackId) }
+                  onChange={ () => {
+                    if (favorites.length === 0) {
+                      return this.addFavorite(track.trackId);
+                    }
+                    fav = favorites.some((element) => element.trackId === track.trackId);
+                    if (fav) {
+                      return this.removeFavorite(track.trackId);
+                    }
                     return this.addFavorite(track.trackId);
-                  }
-                  fav = favorites.some((element) => element.trackId === track.trackId);
-                  if (fav) {
-                    return this.removeFavorite(track.trackId);
-                  }
-                  return this.addFavorite(track.trackId);
-                } }
-              />))) : <Loading />
-        }
+                  } }
+                />))) : <Loading />
+          }
+        </section>
       </div>
     );
   }

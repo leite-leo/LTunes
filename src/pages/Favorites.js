@@ -39,21 +39,23 @@ class Favorites extends React.Component {
     return (
       <div className="favoritas" data-testid="page-favorites">
         <Header />
-        <h5>Musicas Favoritas:</h5>
-        {(
-          !loading ? (
-            favorites.map((track) => (
-              <MusicCard
-                key={ track.trackName }
-                trackName={ track.trackName }
-                previewUrl={ track.previewUrl }
-                trackId={ track.trackId }
-                checked={ favorites.some((song) => song.trackId === track.trackId) }
-                onChange={ () => this.removeFavorite(track.trackId) }
-              />
-            ))
-          ) : <Loading />
-        )}
+        <section className="favorite-musics">
+          <h5>Musicas Favoritas:</h5>
+          {(
+            !loading ? (
+              favorites.map((track) => (
+                <MusicCard
+                  key={ track.trackName }
+                  trackName={ track.trackName }
+                  previewUrl={ track.previewUrl }
+                  trackId={ track.trackId }
+                  checked={ favorites.some((song) => song.trackId === track.trackId) }
+                  onChange={ () => this.removeFavorite(track.trackId) }
+                />
+              ))
+            ) : <Loading />
+          )}
+        </section>
       </div>
     );
   }
