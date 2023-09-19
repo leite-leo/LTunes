@@ -45,40 +45,43 @@ class Search extends React.Component {
     const { artist, isDisabled, albuns, loading, showResult, artistName } = this.state;
     return (
       <div data-testid="page-search" className="search-section">
-        <Header />
-        {loading ? <Loading /> : (
-          <div className="search-form mt-md-5">
-            <img src="https://iili.io/HLWQofs.jpg" className="login-img" alt="logotipo" />
-            <br />
-            <br />
-            <form className="d-flex flex-column">
-              <h5>Pesquise por um artista ou banda:</h5>
-              <label htmlFor="name" className="">
-                <input
-                  type="text"
-                  className="form-control mb-2 mr-sm-2"
-                  placeholder=""
-                  aria-label="artist"
-                  aria-describedby="inputGroup-sizing-default"
-                  data-testid="search-artist-input"
-                  name="artist"
-                  id="artist"
-                  value={ artist }
-                  onChange={ this.onInputChange }
-                />
-              </label>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                data-testid="search-artist-button"
-                disabled={ isDisabled }
-                onClick={ () => this.handleClick() }
-              >
-                Pesquisar
-              </button>
-            </form>
-          </div>
-        )}
+        <section className="search-header-container">
+          <Header />
+          {loading ? <Loading /> : (
+            <div className="search-form mt-md-5">
+              <img src="https://iili.io/HLWQofs.jpg" className="login-img" alt="logotipo" />
+              <br />
+              <br />
+              <form className="d-flex flex-column">
+                <h5>Pesquise por um artista ou banda:</h5>
+                <label htmlFor="name" className="">
+                  <input
+                    type="text"
+                    className="form-control mb-2 mr-sm-2"
+                    placeholder=""
+                    aria-label="artist"
+                    aria-describedby="inputGroup-sizing-default"
+                    data-testid="search-artist-input"
+                    name="artist"
+                    id="artist"
+                    value={ artist }
+                    onChange={ this.onInputChange }
+                  />
+                </label>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  data-testid="search-artist-button"
+                  disabled={ isDisabled }
+                  onClick={ () => this.handleClick() }
+                >
+                  Pesquisar
+                </button>
+              </form>
+            </div>
+          )}
+        </section>
+        
         <section className="albuns">
           { showResult
             && (

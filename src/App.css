@@ -29,11 +29,21 @@
   text-decoration: none;
 }
 
+.search-header-container{
+  background-color: white;
+  height: 32%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
 .albuns {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  padding-top: 280px;
   text-decoration: none;
   width: 100%;
 
@@ -72,6 +82,28 @@
   width: 650px;
 }
 
+.album-header-container {
+  background-color: white;
+  height: 27%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.album-info-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.album-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .intra-card {
   color: hsl(180, 6%, 20%);
   display: flex;
@@ -101,6 +133,9 @@ h5 {
   flex-direction: column;
   margin-bottom: 65px;
   margin-top: 15px;
+  padding-top: 280px;
+  position: relative;
+  z-index: 1;
   text-decoration: none;
   width: 100%;
 }

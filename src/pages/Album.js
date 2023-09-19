@@ -66,10 +66,19 @@ class Album extends React.Component {
     let fav = false;
     return (
       <div data-testid="page-album">
-        <Header />
+        <section className="album-header-container">
+          <Header />
+          <div className="album-info-container">
+            <img src="https://iili.io/HLWQofs.jpg" className="login-img" alt="logotipo" />
+            <br />
+            <br />
+            <div className="album-infos">
+              <h3 data-testid="album-name">{`Álbum: ${albumName}`}</h3>
+              <h5 data-testid="artist-name">{`Artista: ${artist}`}</h5>
+            </div>
+          </div>
+        </section>
         <section className="album-musics">
-          <h3 data-testid="album-name">{`Álbum: ${albumName}`}</h3>
-          <h5 data-testid="artist-name">{`Artista: ${artist}`}</h5>
           {
             !loading ? (
               tracks.map((track) => (
