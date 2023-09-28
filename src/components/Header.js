@@ -19,7 +19,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { name, loading } = this.state;
+    const { loading } = this.state;
     return (
       loading ? <Loading />
         : (

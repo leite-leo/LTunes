@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { createUser } from '../services/userAPI';
+import { createUser, readUser } from '../services/userAPI';
 import Loading from './Loading';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -25,12 +25,16 @@ class Login extends React.Component {
 
   handleClick = async () => {
     const { name } = this.state;
+    const user = await readUser(name);
     const { history } = this.props;
     this.setState({
       name,
       loading: true });
-    await createUser({ name });
+    if (!user || user === undefined) {
+      await createUser(name);
+    }
     this.setState({ loading: false });
+    localStorage.setItem('loggedUser', JSON.stringify(name));
     history.push('/search');
   };
 

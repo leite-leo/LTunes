@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
-import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 
 class Favorites extends React.Component {
@@ -17,17 +18,26 @@ class Favorites extends React.Component {
   async recoverFavoriteSongs() {
     this.setState({ loading: true });
     const favoriteds = await getFavoriteSongs();
+    console.log('favoriteds222::', favoriteds);
     this.setState({
       loading: false,
-      favorites: [...favoriteds],
+      favorites: favoriteds,
     });
   }
 
   async removeFavorite(id) {
+    const user = await getUser();
     const { favorites } = this.state;
-    const trackToRemove = favorites.find((track) => track.trackId === id);
+    const updatedFavorites = favorites.filter((track) => track.trackId !== id);
+    const userData = {
+      name: user.name,
+      email: user.email,
+      image: user.image,
+      description: user.description,
+      favoriteSongs: updatedFavorites,
+    };
+    localStorage.setItem(user.name, JSON.stringify(userData));
     this.setState({ loading: true });
-    await removeSong(trackToRemove);
     await this.recoverFavoriteSongs();
     this.setState({
       loading: false,
@@ -38,9 +48,18 @@ class Favorites extends React.Component {
     const { loading, favorites } = this.state;
     return (
       <div className="favoritas" data-testid="page-favorites">
-        <Header />
+        <section className="album-header-container">
+          <Header />
+          <div className="album-info-container">
+            <img src="https://iili.io/HLWQofs.jpg" className="login-img" alt="logotipo" />
+            <br />
+            <br />
+            <div className="album-infos">
+              <h5>Minhas Músicas Favoritas</h5>
+            </div>
+          </div>
+        </section>
         <section className="favorite-musics">
-          <h5>Musicas Favoritas:</h5>
           {(
             !loading ? (
               favorites.map((track) => (

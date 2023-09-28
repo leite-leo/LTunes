@@ -30,9 +30,9 @@ class App extends React.Component {
               <Favorites { ...props } />
             ) }
           />
-          <Profile exact path="/profile" Component={ Profile } />
-          <ProfileEdit exact path="/profile/edit" Component={ ProfileEdit } />
-          <NotFound exact path="*" Component={ NotFound } />
+          <Route exact path="/profile" render={ (props) => <Profile { ...props } /> } />
+          <Route exact path="/profile/edit" render={ (props) => <ProfileEdit { ...props } /> } />
+          <NotFound exact path="*" component={ NotFound } />
         </Switch>
       </div>
     );

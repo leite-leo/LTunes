@@ -1,9 +1,9 @@
-const USER_KEY = 'user';
 const TIMEOUT = 1500;
 const SUCCESS_STATUS = 'OK';
 
-const readUser = () => JSON.parse(localStorage.getItem(USER_KEY));
-const saveUser = (user) => localStorage.setItem(USER_KEY, JSON.stringify(user));
+export const readLoggedUser = () => JSON.parse(localStorage.getItem('loggedUser'));
+export const readUser = (user) => JSON.parse(localStorage.getItem(user));
+const saveUser = (user) => localStorage.setItem(user.name, JSON.stringify(user));
 
 // --------------------------------------------------------------------
 // A função simulateRequest simula uma requisição para uma API externa
@@ -19,7 +19,8 @@ const simulateRequest = (response) => (callback) => {
 };
 
 export const getUser = () => new Promise((resolve) => {
-  let user = readUser();
+  const loggedUser = readLoggedUser();
+  let user = readUser(loggedUser);
   if (user === null) {
     user = {};
   }
@@ -28,12 +29,13 @@ export const getUser = () => new Promise((resolve) => {
 
 export const createUser = (user) => new Promise((resolve) => {
   const emptyUser = {
-    name: '',
+    name: user,
     email: '',
-    image: '',
+    image: 'https://cdn-icons-png.flaticon.com/512/1177/1177568.png',
     description: '',
+    favoriteSongs: [],
   };
-  saveUser({ ...emptyUser, ...user });
+  saveUser({ ...emptyUser });
   simulateRequest(SUCCESS_STATUS)(resolve);
 });
 
