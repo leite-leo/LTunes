@@ -31,15 +31,15 @@ class Profile extends React.Component {
         <section className="login-page mt-md-5">
           <h2>Perfil</h2>
           <img src={ user.image } alt="foto de perfil" width="75px" height="75px" className="profile-image" />
-          <h3 className="mb-2 mr-sm-2">
+          <h5 className="mb-2 mr-sm-2">
             { user.name }
-          </h3>
-          <h3 className="mb-2 mr-sm-2">
+          </h5>
+          <h5 className="mb-2 mr-sm-2">
             { user.email }
-          </h3>
-          <h3 className="mb-2 mr-sm-2">
+          </h5>
+          <h5 className="mb-2 mr-sm-2">
             { user.description }
-          </h3>
+          </h5>
           <button
             type="button"
             className="btn btn-outline-primary"

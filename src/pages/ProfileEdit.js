@@ -19,11 +19,24 @@ class ProfileEdit extends React.Component {
     this.callGetUser();
   }
 
-  async handleClick() {
-    const { user } = this.state;
-    const { history } = this.props;
-    await updateUser(user);
-    history.push('/profile');
+  handleClick = async () => {
+    this.setState(
+      async (prevState) => {
+        const userData = {
+          name: prevState.name,
+          email: prevState.email,
+          image: prevState.image,
+          description: prevState.description,
+          favoriteSongs: prevState.favoriteSongs,
+        };
+        localStorage.setItem(prevState.userName, JSON.stringify(userData));
+        await updateUser(userData);
+      },
+      () => {
+        const { history } = this.props;
+        history.push('/profile');
+      },
+    );   
   }
 
   onInputChange = ({ target }) => {
