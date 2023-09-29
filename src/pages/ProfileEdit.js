@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class ProfileEdit extends React.Component {
   state = {
-    user: [],
     name: '',
     email: '',
     description: '',
@@ -36,21 +35,12 @@ class ProfileEdit extends React.Component {
         const { history } = this.props;
         history.push('/profile');
       },
-    );   
-  }
+    );
+  };
 
   onInputChange = ({ target }) => {
-    const { name, email, description, image, favoriteSongs } = this.state;
-    const obj = {
-      name,
-      email,
-      image,
-      description,
-      favoriteSongs,
-    };
     this.setState({
       [target.name]: target.value,
-      user: obj,
     }, this.checkInput);
   };
 
@@ -68,7 +58,6 @@ class ProfileEdit extends React.Component {
   async callGetUser() {
     const user = await getUser();
     this.setState({
-      user,
       name: user.name,
       email: user.email,
       description: user.description,
@@ -86,7 +75,13 @@ class ProfileEdit extends React.Component {
         <h3 className="login-page mt-md-5">Editar perfil</h3>
         <form className="d-flex flex-column">
           <div className="d-flex flex-column align-items-center">
-            <img src={ image } alt="foto de perfil" width="75px" height="75px" className="profile-image" />
+            <img
+              src={ image }
+              alt="foto de perfil"
+              width="75px"
+              height="75px"
+              className="profile-image"
+            />
             <label htmlFor="image">
               Foto:
               <input

@@ -34,9 +34,11 @@ export const simulateRequest = (response) => (callback) => {
   }, TIMEOUT);
 };
 
-export const getFavoriteSongs = () => new Promise(async (resolve) => {
-  const favoriteSongs = await readFavoriteSongs();
-  simulateRequest(favoriteSongs)(resolve);
+export const getFavoriteSongs = () => new Promise((resolve) => {
+  readFavoriteSongs()
+    .then((favoriteSongs) => {
+      simulateRequest(favoriteSongs)(resolve);
+    });
 });
 
 export const addSong = (song) => new Promise((resolve) => {
@@ -47,8 +49,12 @@ export const addSong = (song) => new Promise((resolve) => {
   simulateRequest(SUCCESS_STATUS)(resolve);
 });
 
-export const removeSong = (song) => new Promise(async (resolve) => {
-  const favoriteSongs = await readFavoriteSongs();
-  saveFavoriteSongs(favoriteSongs.filter((s) => s.trackId !== song.trackId));
-  simulateRequest(SUCCESS_STATUS)(resolve);
+export const removeSong = (song) => new Promise((resolve) => {
+  readFavoriteSongs()
+    .then((favoriteSongs) => {
+      const updatedFavoriteSongs = favoriteSongs
+        .filter((s) => s.trackId !== song.trackId);
+      saveFavoriteSongs(updatedFavoriteSongs);
+      simulateRequest('OK')(resolve);
+    });
 });

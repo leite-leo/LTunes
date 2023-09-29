@@ -4,7 +4,8 @@ import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import { getUser } from '../services/userAPI';
-import { getFavoriteSongs, removeSong, simulateRequest } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs,
+  removeSong, simulateRequest } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class Album extends React.Component {
@@ -16,21 +17,24 @@ class Album extends React.Component {
     loading: false,
   };
 
-  async componentDidMount() {
-    const { match: { params: { id } } } = this.props;
-    const user = await getUser();
-    console.log('user:::', user.favoriteSongs);
-    this.setState({
-      ...this.state,
-      [user.name]: user,
-      userName: user.name,
-      description: user.description,
-      email: user.email,
-      image: user.image,
-      favorites: user.favoriteSongs,
-    });
-    this.responseFromGetMusics(id);
-    this.recoverFavoriteSongs();
+  componentDidMount() {
+    this.setState(
+      async (prevState) => {
+        const { match: { params: { id } } } = this.props;
+        const user = await getUser();
+        this.setState({
+          ...prevState,
+          [user.name]: user,
+          userName: user.name,
+          description: user.description,
+          email: user.email,
+          image: user.image,
+          favorites: user.favoriteSongs,
+        });
+        this.responseFromGetMusics(id);
+        this.recoverFavoriteSongs();
+      },
+    );
   }
 
   addFavorite = (id) => {
@@ -58,7 +62,8 @@ class Album extends React.Component {
     await removeSong(track);
     this.setState(
       (prevState) => {
-        const updatedFavorites = prevState.favorites.filter((song) => song.trackId !== track.trackId);
+        const updatedFavorites = prevState.favorites
+          .filter((song) => song.trackId !== track.trackId);
         const userData = {
           name: prevState.userName,
           email: prevState.email,
@@ -97,10 +102,10 @@ class Album extends React.Component {
         loading: false,
       });
     } else {
-        this.setState({
-          loading: false,
-        });
-      }
+      this.setState({
+        loading: false,
+      });
+    }
   }
 
   render() {

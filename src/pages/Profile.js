@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
@@ -11,17 +12,17 @@ class Profile extends React.Component {
     this.callGetUser();
   }
 
+  handleClick = () => {
+    const { history } = this.props;
+    history.push('/profile/edit');
+  };
+
   async callGetUser() {
     const user = await getUser();
     this.setState({
       user,
     });
   }
-
-  handleClick = () => {
-    const { history } = this.props;
-    history.push('/profile/edit');
-  };
 
   render() {
     const { user } = this.state;
@@ -30,7 +31,13 @@ class Profile extends React.Component {
         <Header />
         <section className="login-page mt-md-5">
           <h2>Perfil</h2>
-          <img src={ user.image } alt="foto de perfil" width="75px" height="75px" className="profile-image" />
+          <img
+            src={ user.image }
+            alt="foto de perfil"
+            width="75px"
+            height="75px"
+            className="profile-image"
+          />
           <h5 className="mb-2 mr-sm-2">
             { user.name }
           </h5>
@@ -53,5 +60,11 @@ class Profile extends React.Component {
     );
   }
 }
+
+Profile.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Profile;
