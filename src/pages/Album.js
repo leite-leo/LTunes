@@ -75,7 +75,6 @@ class Album extends React.Component {
         return { favorites: updatedFavorites };
       },
       () => {
-        // Após o setState ser concluído com sucesso, chame recoverFavoriteSongs
         this.recoverFavoriteSongs();
       },
     );

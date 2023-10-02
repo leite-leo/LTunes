@@ -1,3 +1,7 @@
+body {
+  background-color: white;
+}
+
 .loading-container {
   align-items: center;
   display: flex;
