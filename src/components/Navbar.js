@@ -28,7 +28,18 @@ class Navbar extends React.Component {
           id="navbarNav"
         >
           <ul className="navbar-nav nav-underline d-flex justify-content-evenly">
-            {/* ...rest of your code */}
+            <li className="nav-item active">
+              <a className="nav-link fs-4" href="/search">Pesquisa</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link fs-4" href="/favorites">Favoritas</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link fs-4" href="/profile">Perfil</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link fs-4" href="/">Sair</a>
+            </li>
           </ul>
         </div>
       </nav>
