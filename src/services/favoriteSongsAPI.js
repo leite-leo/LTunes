@@ -21,13 +21,6 @@ const saveFavoriteSongs = async (favoriteSongs) => {
   localStorage.setItem(userData.name, JSON.stringify(newUserData));
 };
 
-// --------------------------------------------------------------------
-// A função simulateRequest simula uma requisição para uma API externa
-// Esse tipo de função que "chama outra função" é chamada de
-// "currying function" https://javascript.info/currying-partials
-// não se preocupe, estudaremos isso futuramente.
-// --------------------------------------------------------------------
-
 export const simulateRequest = (response) => (callback) => {
   setTimeout(() => {
     callback(response);

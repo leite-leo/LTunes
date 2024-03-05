@@ -1,40 +1,36 @@
 import React from 'react';
 
 class Navbar extends React.Component {
+  state = {
+    isOpen: false,
+  };
+
+  toggleMenu = () => {
+    this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
+  };
+
   render() {
+    const { isOpen } = this.state;
+
     return (
-      <nav className="navbar navbar-expand-lg background-color: #e3f2fd">
+      <nav className="navbar">
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={ this.toggleMenu }
         >
           <span className="navbar-toggler-icon" />
         </button>
         <div
-          className="collapse navbar-collapse d-flex justify-content-around"
+          className={ `navbar-collapse d-flex justify-content-around ${
+            isOpen ? 'flex' : ''
+          }` }
           id="navbarNav"
         >
           <ul className="navbar-nav nav-underline d-flex justify-content-evenly">
-            <li className="nav-item active">
-              <a className="nav-link fs-4" href="/search">Pesquisa</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link fs-4" href="/favorites">Favoritas</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link fs-4" href="/profile">Perfil</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link fs-4" href="/">Sair</a>
-            </li>
+            {/* ...rest of your code */}
           </ul>
         </div>
-        {/* <h5 data-testid="header-user-name">{ name }</h5> */}
       </nav>
     );
   }

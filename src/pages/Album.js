@@ -131,7 +131,7 @@ class Album extends React.Component {
             !loading ? (
               tracks.map((track) => (
                 track.kind === 'song' && <MusicCard
-                  key={ track.trackName }
+                  key={ track.trackId }
                   trackName={ track.trackName }
                   previewUrl={ track.previewUrl }
                   trackId={ track.trackId }

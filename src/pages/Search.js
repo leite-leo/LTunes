@@ -54,7 +54,7 @@ class Search extends React.Component {
         <section className="search-header-container">
           <Header />
           {loading ? <Loading /> : (
-            <div className="search-form mt-md-5">
+            <div className="search-form">
               <img src="https://iili.io/HLWQofs.jpg" className="login-img" alt="logotipo" />
               <br />
               <br />
